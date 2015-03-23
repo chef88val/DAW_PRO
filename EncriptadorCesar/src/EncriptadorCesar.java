@@ -1,26 +1,28 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import javax.swing.JLabel;
 
 public class EncriptadorCesar {
 
-	    public static void main(String[] args){
+	    public static void main(String[] args) throws IOException{
 	        Cifrar c1 = new Cifrar();
 	        Cifrar c2 = new Cifrar();
 	        BufferedReader br = null;
-			String sTexto = "";
+			String sTexto = null;
+			Panel panel= new Panel();
 			
-			br = new BufferedReader(new InputStreamReader(System.in));
+			panel.setVisible(true);
 			
-			try {
-				
-				  sTexto = br.readLine();
+			
+			
+				//sTexto=br.readLine();
+			
+				 sTexto = panel.getText();
+				 sTexto.replace("", "");
 				  System.out.println(sTexto);
-				
-			} catch (IOException io){
-				io.printStackTrace();
-			}
+			//panel.setText(c2.descifrarMensaje(sTexto, 19));
 
-	        System.out.println(sTexto+"=" + c2.descifrarMensaje(sTexto, 19));
+	       
 	    }
 	}
