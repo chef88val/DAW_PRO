@@ -12,12 +12,9 @@ public class UsuariosModel {
 	private final static String USUARIO_SEL = "Select * from usuarios";
 	private final static String USUARIO_COL= "nick";
 	
-	/*Definimos la sentencia para insertar los nombres de usuarios
-	private final static String USUARIO_INS = "insert into usuarios values";
-	INSERT INTO `GamesDB`.`usuarios` (`nick`, `pass`, `nombre`) 
-	VALUES ('chef88val', 'hola', 'javier');
-
-	private final static String USUARIO_COL= "nick";*/
+	//Definimos la sentencia para insertar los nombres de usuarios
+	private final static String USUARIO_INS = "insert into usuarios";
+	private final static String USUARIO_COL= "nick";
 	
 	//Definimos los valores de la conexión
 	private Connection conexion =null;
@@ -61,7 +58,7 @@ public class UsuariosModel {
 		}
 	}
 
-	/*public ArrayList setUsuarios()
+	public ArrayList setUsuarios()
 	{
 		try{
 			sql = this.conexion.createStatement();
@@ -87,5 +84,5 @@ public class UsuariosModel {
 			}
 		}
 		
-	}*/
+	}
 }
