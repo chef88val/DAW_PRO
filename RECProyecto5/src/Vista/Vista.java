@@ -40,7 +40,7 @@ public class Vista extends JFrame {
 		
 		//Definimos las caracterisitcas de nuestro JFrame
 		super("GamesDB");
-		setResizable(true);
+		setResizable(false);
 	
 		setVisible(true);
 		
