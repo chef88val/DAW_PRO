@@ -40,7 +40,7 @@ public class Vista extends JFrame {
 		
 		//Definimos las caracterisitcas de nuestro JFrame
 		super("GamesDB");
-		setResizable(false);
+		setResizable(true);
 	
 		setVisible(true);
 		
@@ -63,7 +63,7 @@ public class Vista extends JFrame {
 				
 				contentPane.removeAll();
 				contentPane.add(vprincipal);
-				contentPane.setBackground(Color.blue);
+				//contentPane.setBackground(Color.blue);
 				contentPane.repaint();
 				
 			}
@@ -82,7 +82,7 @@ public class Vista extends JFrame {
 				System.out.println("Cambio a juegos");
 				contentPane.removeAll();
 				contentPane.add(vjuegos);
-				contentPane.setBackground(Color.red);
+				//contentPane.setBackground(Color.red);
 				contentPane.repaint();
 				
 				
@@ -98,7 +98,7 @@ public class Vista extends JFrame {
 				
 				contentPane.removeAll();
 				contentPane.add(vperfil);
-				contentPane.setBackground(Color.green);
+				//contentPane.setBackground(Color.green);
 				contentPane.repaint();
 			}
 		});
