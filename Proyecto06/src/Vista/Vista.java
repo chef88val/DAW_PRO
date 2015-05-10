@@ -130,6 +130,7 @@ public class Vista extends JFrame {
 		 usuarios = new UsuariosModel();
 		
 		Iterator<String> it= usuarios.getUsuarios().iterator();
+		
 		while(it.hasNext())
 		{
 			comboBox.addItem((String)it.next());

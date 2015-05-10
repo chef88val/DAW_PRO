@@ -31,6 +31,7 @@ public class UsuariosModel {
 	{
 		conexion=ConexionBD.getConexion();
 		usuarios= new ArrayList<String>();
+	
 	}
 
 	//Definimos el método para buscar los usuarios
@@ -43,6 +44,7 @@ public class UsuariosModel {
 			while(rs.next())
 			{
 				usuarios.add(rs.getString(USUARIO_COL));
+				
 			}
 			return usuarios;
 		}catch(SQLException excepcionSQL)
