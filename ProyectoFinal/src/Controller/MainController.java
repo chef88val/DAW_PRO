@@ -8,6 +8,7 @@ import Model.Trabajador;
 import Model.personalModel;
 import Model.user;
 import Vista.Vista;
+import Vista.vLogin;
 import Vista.vPersonal;
 
 
@@ -21,6 +22,8 @@ public class MainController {
 	//VentanaPrincipal
 	private Vista vMain;
 	private vPersonal vpersonal;
+	private vLogin vlogin;
+	private Autenticar auth;
 	
 	private personalModel personalM;
 	private ArrayList<Trabajador> empleados;
@@ -36,7 +39,9 @@ public class MainController {
 		personalM= new personalModel();
 		vpersonal=new vPersonal();
 		empleados=new ArrayList<Trabajador>();
-		this.showMain();
+		vlogin=new vLogin();
+		auth=new Autenticar();
+		this.showLogin();
 	}
 	
 	
@@ -48,11 +53,24 @@ public class MainController {
 	      return instance;
 	}
 	
+	
+	
 	//Lanzar vista Inicial
 	public void showMain(){
+		
 		//Lanzamos la ventana principal
+		
 		vMain = new Vista();		
 		vMain.setVisible(true);	
+		
+	}
+	public void showLogin()
+	{
+		vlogin.setVisible(true);
+		ArrayList<user> jefe=personalM.getJefe();
+		System.out.println("jefe"+jefe);
+		vlogin.putUsuarios(jefe);
+	
 	}
 	
 	//Lanzar Inicio
@@ -64,7 +82,7 @@ public class MainController {
 		
 		vMain.showPersonal();
 		empleados=personalM.getPersonal();
-		vpersonal.putPersonal(empleados);
+		vMain.putPersonal(empleados);
 		System.out.println("xxx"+personalM.getPersonal());
 		
 		
@@ -80,10 +98,15 @@ public class MainController {
 	}
 	
 	
-	public void botonesPersonal()
+	public void newPersonal(Trabajador insert)
 	{
-		
-		
+		System.out.println("newPersonal");
+		personalM.setPersonal(insert);
+	}
+	public void updatePersonal(Trabajador update)
+	{
+		System.out.println("updatePersonal");
+		personalM.updatePersonal(update);
 	}
 	
 	public void botonesStock()
@@ -94,5 +117,17 @@ public class MainController {
 	public void botonesContabilidad()
 	{
 		
+	}
+	
+	public void lograr(String passTxt)
+	{
+		System.out.println("PSS"+passTxt);
+		boolean userOK= this.auth.comprobarUser(passTxt);
+		System.out.println("userOK"+userOK);
+		if(userOK==true)
+		{
+		showMain();
+		}else{System.out.println("error logeando");}
+		//this.showMain();
 	}
 }

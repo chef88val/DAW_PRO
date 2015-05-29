@@ -156,5 +156,9 @@ public class Vista extends JFrame {
 		c.show(ventanas, "contabilidad");
 	}
 	
+	public void putPersonal(ArrayList trabajador)
+	{
+		vpersonal.putPersonal(trabajador); 
+	}
 	
 }

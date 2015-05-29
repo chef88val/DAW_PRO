@@ -32,7 +32,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ListModel;
 
 public class vPersonal extends JPanel {
-	protected JTextField txtNombreEmpleado;
+	public JTextField txtNombreEmpleado;
 	public JTextField txtApellidoEmpleado;
 	public JTextField txtCargoEmpleado;
 	public JTextField txtSueldoEmpleado;
@@ -53,8 +53,19 @@ public class vPersonal extends JPanel {
 		panel.setLayout(null);
 		add(panel);
 		
-		
+		personal=new personalModel();
 		JButton btnGuardarPersonal = new JButton("Guardar");
+		btnGuardarPersonal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Guardar1"+txtNombreEmpleado.getText());
+				Trabajador trabajador =(Trabajador)listModel.getElementAt(list.getSelectedIndex());
+				Trabajador update=new Trabajador(trabajador.getID(),txtNombreEmpleado.getText(), txtApellidoEmpleado.getText(), 
+							txtCargoEmpleado.getText(), txtSueldoEmpleado.getText());
+				MainController.getInstance().updatePersonal(update);
+				//personal.setPersonal(txtNombreEmpleado.getText(), txtApellidoEmpleado.getText(), txtCargoEmpleado.getText(), txtSueldoEmpleado.getText());
+				System.out.println("Guardar"+txtNombreEmpleado.getText());
+			}
+		});
 		btnGuardarPersonal.setBounds(327, 265, 117, 29);
 		panel.add(btnGuardarPersonal);
 		
@@ -62,14 +73,18 @@ public class vPersonal extends JPanel {
 		btnNuevoPersonal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/*setDatos();*/
-				MainController.getInstance().botonesPersonal(); 
-				 Trabajador trabajador=(Trabajador)listModel.getElementAt(list.getSelectedIndex());
+				System.out.println("Nuevo"+txtNombreEmpleado.getText());
+				Trabajador insert=new Trabajador(0,txtNombreEmpleado.getText(), txtApellidoEmpleado.getText(), 
+							txtCargoEmpleado.getText(), txtSueldoEmpleado.getText());
+				MainController.getInstance().newPersonal(insert); 
+				
                  //Coloco los datos en los campos
-                 txtNombreEmpleado.setText(trabajador.getNombre());
-                 txtApellidoEmpleado.setText(trabajador.getApellidos());
-                 txtCargoEmpleado.setText(trabajador.getCargo());
-                 txtSueldoEmpleado.setText(trabajador.getSueldo());
-                 System.out.println("sss"+trabajador.getSueldo());
+                 txtNombreEmpleado.setText("");
+                 txtApellidoEmpleado.setText("");
+                 txtCargoEmpleado.setText("");
+                 txtSueldoEmpleado.setText("");
+                
+				
 			}
 		});
 		btnNuevoPersonal.setBounds(6, 265, 141, 29);
@@ -150,21 +165,21 @@ public class vPersonal extends JPanel {
 	
 	}
 	
-public void putPersonal(ArrayList juegos)
+public void putPersonal(ArrayList empledados)
 {
-	System.out.println("Juegos"+juegos);
-	Iterator<Trabajador> it=juegos.iterator();
+	System.out.println("Juegos"+empledados);
+	Iterator<Trabajador> it=empledados.iterator();
 	listModel.removeAllElements();
 	while(it.hasNext())
 	{
 		
 		Trabajador trabajador=(Trabajador)it.next();
-		//listModel.addElement(trabajador);
-		listModel.addElement(trabajador.getNombre());
+		listModel.addElement(trabajador);
+		/*listModel.addElement(trabajador.getNombre());
 		listModel.addElement(trabajador.getApellidos());
 		listModel.addElement(trabajador.getCargo());
 		listModel.addElement(trabajador.getSueldo());
-		System.out.println("Sueldo trabajador"+trabajador.getSueldo());
+		System.out.println("Sueldo trabajador"+trabajador.getSueldo());*/
 		
 	}
 }

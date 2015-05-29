@@ -3,10 +3,43 @@ package Controller;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+
+import Model.personalModel;
+import Model.user;
 
 public class Autenticar {
+	private boolean isAuth=false;
+	private personalModel personalM;
+	private ArrayList<user> jefe;
+	
 
 	public Autenticar() {
+		personalM=new personalModel();
+		jefe=new ArrayList<user>();
+	}
+	public boolean estaLogado()
+	{
+		System.out.println("auth1"+isAuth);
+		return this.isAuth;
+	}
+	
+	public boolean comprobarUser(String pass)
+	{
+		/*if(jefe.getPass()==pass)
+		this.isAuth=true;
+		else this.isAuth=false;*/
+		
+		
+		ArrayList<user> jefe=personalM.getJefe();
+		System.out.println("aut2"+jefe.get(0));
+		 for(user s:jefe){
+		    	s.getPass();
+		   
+		if(pass.equals(s.getPass())) {System.out.println("authif"+pass);isAuth=true;}
+		else{ System.out.println("authelse"+pass);isAuth=false;}
+		 }
+		 return this.isAuth; 
 	}
 	
 	//Método privado para la conversión tras el uso de MD5 
@@ -35,4 +68,6 @@ public class Autenticar {
         md5hash = md.digest();
         return convertToHex(md5hash);
     } 
+    
+   
 }
